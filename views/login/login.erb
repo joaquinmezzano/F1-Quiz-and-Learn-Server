@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href='/icons/icon-1-50.png'>
+    <link rel="stylesheet" href="/styles/styleLogin.css">
+</head>
+<body>
+    <section>
+        <div class="contenedor">
+            <a href="/" class="back-arrow">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <div class="formulario">
+                <form action="/login" method="post">
+                    <h2>Login</h2>
+
+                    <div class="input-contenedor">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="username" required>
+                        <label for="username">User</label>
+                    </div>
+
+                    <div class="input-contenedor">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+
+                    <div>
+                        <button type="submit">Log in</button>
+                    </div>
+
+                    <% if @error %>
+                        <p class="error-message" id="error-message"><%= @error %></p>
+                    <% end %>
+                </form>
+                <div class="registrar">
+                    <p><a href="/register"><u>I don't have an account</u></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        window.onload = function() {
+            var errorMessage = document.getElementById('error-message');
+            if (errorMessage) {
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+        };
+    </script>
+</body>
+</html>

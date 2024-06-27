@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team</title>
+    <link rel="icon" href="/icons/icon-1-50.png">
+    <link rel="stylesheet" href="/styles/styleTeam.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src='/icons/icon-red-1-150.png' alt="Logo de F1 Quiz & Learn">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/" class="back-arrow" id="back"> <i class="fa-solid fa-arrow-left"> </i></a></li>
+                <li><a href="/team" onclick="return false" id="same"><b>Team</b></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Team</h1>
+        <div class="gamemodes">
+            <a href="https://github.com/brunocontii/" class="gamemode" id="bruno" target="_blank">
+                <img src="../profile_pictures/charles-leclerc-2024.png">
+                <p>Bruno Conti</p>
+                <div class="info"><img src="../icons/github.png"></div>
+            </a>
+            <a href="https://github.com/JuanchoGonzalez" class="gamemode" id="juan" target="_blank">
+                <img src="../profile_pictures/lewis-hamilton-2024.png">
+                <p>Juan Cruz Gonzalez</p>
+                <div class="info"><img src="../icons/github.png"></div>
+            </a>
+            <a href="https://github.com/joaquinmezzano" class="gamemode" id="joaquin" target="_blank">
+                <img src="../profile_pictures/valtteri-bottas-2024.png">
+                <p>Joaquin Mezzano</p>
+                <div class="info"><img src="../icons/github.png"></div>
+            </a>
+            <a href="https://github.com/erichvollenweider" class="gamemode" id="erich" target="_blank">
+                <img src="../profile_pictures/max-verstappen-2024.png">
+                <p>Erich Vollenweider</p>
+                <div class="info"><img src="../icons/github.png"></div>
+            </a>
+        </div>
+        <div class="gamemodes">
+            <div class="email">
+                <p><a href="mailto:brunocse.5@gmail.com" target="_blank">brunocse.5@gmail.com</a></p>
+            </div>
+            <div class="email">
+                <p><a href="mailto:juancruzg30@gmail.com" target="_blank">juancruzg30@gmail.com</a></p>
+            </div>
+            <div class="email">
+                <p><a href="mailto:mezzanojoaquin@gmail.com" target="_blank">mezzanojoaquin@gmail.com</a></p>
+            </div>
+            <div class="email">
+                <p><a href="mailto:vollenweidererich@gmail.com" target="_blank">vollenweidererich@gmail.com</a></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 F1 Quiz & Learn. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const gamemodes = document.querySelectorAll(".gamemode");
+
+            gamemodes.forEach(gamemode => {
+                gamemode.addEventListener("mouseover", function() {
+                    const info = this.querySelector(".info");
+                    info.style.opacity = "1";
+                });
+
+                gamemode.addEventListener("mouseout", function() {
+                    const info = this.querySelector(".info");
+                    info.style.opacity = "0";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

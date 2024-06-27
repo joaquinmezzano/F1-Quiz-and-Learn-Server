@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamemodes</title>
+    <link rel="icon" href="/icons/icon-1-50.png">
+    <link rel="stylesheet" href="/styles/styleMenu.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function updateLives() {
+                $.get('/gamemodes', function(data) {
+                    console.log(data);
+                    $('#lives-count').text(data.lives);
+                });
+            }
+
+            setInterval(updateLives, 20000);
+
+            updateLives();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="left">
+            <a href="/how-to-play" class="menu-item"><b>How To Play</b></a>
+        </div>
+        <div class="right">
+            <div class="user-info">
+                <div class="currency">
+                    <img src="/icons/coin.png" alt="Monedas" class="icon">
+                    <span><%=@current_user ? @current_user.cant_coins : 0%></span>
+                </div>
+                <div class="lives">
+                    <img src="/icons/heart.png" alt="Vidas" class="icon">
+                    <span id="lives-count"><%=@current_user ? @current_user.cant_life : 0%></span>
+                </div>
+                <div class="profile">
+                    <% if current_user.profile %>
+                        <img src= <%= @current_user.profile.profile_picture %> alt="Profile" class="profile-pic" onclick="toggleProfileMenu()">
+                    <% else %>
+                        No profile picture available
+                    <% end %>
+                    <div id="profile-menu" class="profile-menu">
+                        <a href="/profile">Profile</a>
+                        <a href="/logout">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <% if session[:message] %>
+            <div class="message" style="color: <%= session[:color] %>;">
+                <%= session[:message] %>
+            </div>
+            <script>
+                setTimeout(function() {
+                    window.location.href = '<%= @redirect_url || "/gamemodes" %>';
+                }, 4000); 
+            </script>
+            <% session[:message] = nil %>
+            <% session[:color] = nil %>
+        <% end %>
+        <h1>Gamemodes</h1>
+        <div class="gamemodes">
+            <a href="/gamemodes/progressive" class="gamemode">
+                <i class="fas fa-coins"></i> Progressive
+            </a>
+            <a href="/gamemodes/free" class="gamemode">
+                <i class="fas fa-gamepad"></i> Free
+            </a>
+        </div>
+    </main>
+    <script>
+        function toggleProfileMenu() {
+            var menu = document.getElementById('profile-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
