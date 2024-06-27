@@ -1,9 +1,12 @@
 require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/activerecord'
+require 'json'
 
-set :database_file, './config/database.yml'
-set :public_folder, File.dirname(__FILE__) + '/public'
+configure :production, :development, :test do
+    set :database_file, './config/database.yml'
+    set :public_folder, File.dirname(__FILE__) + '/public'
+end
 
 require './models/user'
 require './models/profile'
