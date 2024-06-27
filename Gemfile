@@ -5,10 +5,11 @@ source "https://rubygems.org"
 gem 'sinatra'
 gem 'activerecord'
 gem 'sinatra-activerecord'
-gem "sqlite3", "~> 1.4"
+gem 'pg'
 gem 'rake'
 
 group :test, :development do
     gem 'rspec'
     gem 'rack-test'
+    gem "sqlite3", "~> 1.4"
 end
